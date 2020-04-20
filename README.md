@@ -62,7 +62,7 @@ TBA
 ### 11. Install Mongo DB
 TBA
 ### 12. Install Ruby
-TBA
+
 ### 13. Install Ruby on Rails
 TBA
 
@@ -119,7 +119,7 @@ https://github.com/nvm-sh/nvm#installing-and-updating (Step 8)
 
 https://github.com/sirredbeard/Awesome-WSL (Collection of WSL related links)
 
-
+https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-18-04 (Step 12   )
 
 ## Cool Terminal:
 https://github.com/romkatv/powerlevel10k#oh-my-zsh (Step 3)
