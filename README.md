@@ -58,13 +58,100 @@ Make it your default shell
 	nvm install node 
 
 ### 10. Install PostgreSQL
-TBA
+Run the following to confirm the version of postgresql you already have
+
+    pg_lsclusters
+
+You should see an output like the following:
+
+    Ver Cluster Port Status Owner    Data directory              Log file
+    11  main    5432 down   postgres /var/lib/postgresql/11/main /var/log/postgresql/postgresql-11-main.log
+
+Run the following command to start the version 11 server but make sure to use sudo
+
+    sudo pg_ctlcluster 11 main start
+
+Running pg_lsclusters again you should see that the Status is no longer down but online
+
+    Ver Cluster Port Status Owner    Data directory              Log file
+    11  main    5432 online postgres /var/lib/postgresql/11/main /var/log/postgresql/postgr esql-11-main.log
+
+
 ### 11. Install Mongo DB
 TBA
-### 12. Install Ruby
+### 12. Install Ruby and Ruby on Rails
+Run the following to make sure your packages are up to date:
 
-### 13. Install Ruby on Rails
-TBA
+    sudo apt update
+Install the dependencies for Ruby
+
+    sudo apt install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm5 libgdbm-dev
+
+Run this to make sure you can get the gem pq installed
+    
+    sudo apt-get install postgresql-client libpq5 libpq-dev
+
+Confirm Ruby, RVM and RBENV are not install by running these each at the command line
+
+    ruby
+
+    rvm
+
+    rbenv
+
+Each should return something like this indicating they are not presently installed
+
+    zsh: command not found: rvm
+
+Install RBENV to be your Ruby Version Manager. Clone it into ~/.rbenv 
+
+    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+
+Update your ZSH Shell to be able to use RBENV commands
+
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+and
+
+    echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+
+Open a new terminal window and try out the following commands
+
+    rbenv versions
+
+It should report that you have no versions of Ruby as per below output.
+
+    Warning: no Ruby detected on the system
+
+Lets fix that and install Ruby 2.6.5. First lets install a plugin (ruby-build) to make installs easier
+
+    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+Now lets install Ruby 2.6.5 for real
+
+    rbenv install 2.6.5
+
+This is going to take while to complete... hang in there
+
+Once it is done you should be able to re run the versions command from above to see 2.6.5. But now we need set it as the global default version.
+
+    rbenv global 2.6.5
+
+Once that is done if you again rerun the versions command you should get an output similar to the below
+
+    * 2.6.5 (set by /home/trev/.rbenv/version)
+
+Now we should be able to install a few useful gems. Installing the rails gem will also take a while...
+
+    gem install pry
+    gem install bundler
+    gem install rails
+    
+Use this to make sure you can get the gem pq installed
+
+    sudo apt-get install postgresql-client libpq5 libpq-dev
+
+That should be it. You should not be able to run commands like: 
+
 
 ### X. Backup/Exporting your WSL
 https://winaero.com/blog/export-import-wsl-linux-distro-windows-10/
@@ -117,9 +204,12 @@ https://github.com/ohmyzsh/ohmyzsh (Step 7)
 
 https://github.com/nvm-sh/nvm#installing-and-updating (Step 8)
 
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04 (Step 10)
+
+https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-18-04 (Step 12)
+
 https://github.com/sirredbeard/Awesome-WSL (Collection of WSL related links)
 
-https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-18-04 (Step 12   )
 
 ## Cool Terminal:
 https://github.com/romkatv/powerlevel10k#oh-my-zsh (Step 3)
