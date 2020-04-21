@@ -76,6 +76,28 @@ Running pg_lsclusters again you should see that the Status is no longer down but
     Ver Cluster Port Status Owner    Data directory              Log file
     11  main    5432 online postgres /var/lib/postgresql/11/main /var/log/postgresql/postgr esql-11-main.log
 
+If you try to build a new rails app and try something like rails db:create you will get an error like this:
+
+    PG::InsufficientPrivilege: ERROR:  permission denied to create database
+
+To fix this try the following. Use this command before you want to use psql
+
+    sudo -u postgres -i
+
+You will get dumped at a new prompt. Run this:
+
+    psql
+
+Then this. new_user should be replaced with your linux sub system username:
+
+    ALTER USER new_user CREATEDB;
+
+If you need to grant permissions to a specific database you can use the below:
+
+    GRANT ALL PRIVILEGES ON  DATABASE database_name to new_user;
+
+    ALTER DATABASE database_name owner to new_user;
+
 
 ### 11. Install Mongo DB
 TBA
@@ -206,9 +228,13 @@ https://github.com/nvm-sh/nvm#installing-and-updating (Step 8)
 
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04 (Step 10)
 
+https://stackoverflow.com/questions/28116927/postgres-permission-denied-to-create-database-on-rake-dbcreateall (Step 10)
+
 https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-18-04 (Step 12)
 
 https://github.com/sirredbeard/Awesome-WSL (Collection of WSL related links)
+
+
 
 
 ## Cool Terminal:
