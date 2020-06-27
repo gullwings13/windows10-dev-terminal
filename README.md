@@ -333,5 +333,3 @@ https://stackoverflow.com/questions/35942754/how-to-save-username-and-password-i
         { "command": "copy", "keys": ["ctrl+c"] },
         { "command": "paste", "keys": ["ctrl+v"] }]
     }
-
-
